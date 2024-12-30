@@ -4,7 +4,7 @@ import axios from 'axios'
 export const login = (email,password)=>async(dispatch)=>{
     try {
         dispatch(loginRequest())
-        const {data} = await axios.post(`/api/v1/login`,{email,password})
+        const {data} = await axios.post(`https://reset-back-5p0m.onrender.com/api/v1/login`,{email,password})
         dispatch(loginSuccess(data))
     } catch (error) {
         dispatch(loginFailed(error.response.data.message))
@@ -14,7 +14,7 @@ export const login = (email,password)=>async(dispatch)=>{
 export const register=(name,email,password)=>async(dispatch)=>{
     try {
         dispatch(registerRequest())
-       const {data} = await axios.post(`/api/v1/register`,{name,email,password})
+       const {data} = await axios.post(`https://reset-back-5p0m.onrender.com/api/v1/register`,{name,email,password})
        dispatch(registerSuccess(data))
     } catch (error) {
         dispatch(registerFailed(error.response.data.message))
@@ -25,7 +25,7 @@ export const register=(name,email,password)=>async(dispatch)=>{
 export const forgot =(email,)=>async(dispatch)=>{
     try {
         dispatch(forgotRequest())
-        await axios.post(`api/v1/forgots`,{email})
+        await axios.post(`https://reset-back-5p0m.onrender.com/api/v1/forgots`,{email})
         dispatch(forgotSuccess())
     } catch (error) {
         dispatch(forgotFailed(error.response.data.message)) 
@@ -36,7 +36,7 @@ export const forgot =(email,)=>async(dispatch)=>{
 export const reset =(token,password)=>async(dispatch)=>{
     try {
         dispatch(resetRequest())
-        await axios.post(`http://localhost:6500/api/v1/reset/${token}`,{password})//reset/:token
+        await axios.post(`https://reset-back-5p0m.onrender.com/api/v1/reset/${token}`,{password})//reset/:token
         dispatch(resetSuccess())
     } catch (error) {
         dispatch(resetFailed(error.response.data.message)) 
